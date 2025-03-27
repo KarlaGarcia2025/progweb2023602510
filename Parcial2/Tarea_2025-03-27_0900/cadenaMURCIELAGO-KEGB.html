@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarea2_2oP_cadena</title>
+    <style>
+        body {
+	font-family: Arial, sans-serif;
+	text-align: center;
+	margin: 20px;
+	background-color: #999999;
+}
+        .container { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background: #f9f9f9; }
+        .output { font-weight: bold; color: #333; }
+        .serie-container { max-height: 200px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-top: 10px; background: #fff; }
+.Estilo2 {color: #000000}
+    </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+    <div class="container">
+        <h2 align="center" class="Estilo2">Unidad Profesional Interdisciplinaria de Ingenier&iacute;a y Ciencias Sociales y Administrativas (UPIICSA-IPN)</h2>
+        <h2 align="center" class="Estilo2">Alumno(a): Garc&iacute;a Buend&iacute;a Karla Estrella</h2>
+        <h2 align="center" class="Estilo2">Carrera: Ciencias de la Inform&aacute;tica</h2>
+        <h2 align="center" class="Estilo2">5&deg; Semestre</h2>
+        <h2 align="center" class="Estilo2">Materia: Programaci&oacute;n Web</h2>
+        <h2 align="center" class="Estilo2">Profesor: Huerta Valdepe&ntilde;a Erick</h2>
+        <h2 align="center" class="Estilo2"><marquee>Tarea 2 (2&deg; Parcial - Cadena JavaScript)</marquee></h2>
+        
+        <h3 align="center" class="Estilo2">El texto es: "murcielago"</h3>
+
+        <p align="center" class="Estilo2">Número de Vocales: <span id="vocales"><strong>Cargando...</strong></span></p>
+        <p align="center" class="Estilo2">Número de Consonantes: <span id="consonantes"><strong>Cargando...</strong></span></p>
+        <p align="center" class="Estilo2">Idioma EFE: <span id="idiomaEFE"><strong>Cargando...</strong></span></p>
+    </div>
+
+    <script>
+        function procesarTexto(texto) {
+            let vocales = "aeiouáéíóú";
+            let consonantes = "bcdfghjklmnpqrstvwxyzñ";
+            let numVocales = 0, numConsonantes = 0;
+            let IdiomaEFE = "";
+
+            for (let letra of texto.toLowerCase()) { 
+                if (vocales.includes(letra)) {
+                    numVocales++;
+                    IdiomaEFE += letra;
+                } else if (consonantes.includes(letra)) {
+                    numConsonantes++;
+                    IdiomaEFE += letra + "f" + letra;
+                } else {
+                    IdiomaEFE += letra; 
+                }
+            }
+
+            return { numVocales, numConsonantes, IdiomaEFE };
+        }
+
+        let Cadenita = "murcielago";
+        let resultado = procesarTexto(Cadenita);
+
+        document.getElementById("vocales").textContent = resultado.numVocales;
+        document.getElementById("consonantes").textContent = resultado.numConsonantes;
+        document.getElementById("idiomaEFE").textContent = resultado.IdiomaEFE;
+    </script>
+</body>
+</html>

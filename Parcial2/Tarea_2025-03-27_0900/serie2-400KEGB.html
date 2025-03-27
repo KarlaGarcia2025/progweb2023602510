@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tarea1_2oP_Serie2-400</title>
+    <style>
+        body {
+	font-family: Arial, sans-serif;
+	text-align: center;
+	margin: 20px;
+	background-color: #999999;
+}
+        .container { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background: #f9f9f9; }
+        .output { font-weight: bold; color: #333; }
+        .serie-container { max-height: 200px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-top: 10px; background: #fff; }
+.Estilo2 {color: #000000}
+    </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+        <div class="container">
+		<h2 align="center" class="Estilo2">Unidad Profesional Interdisciplinaria de Ingenier&iacute;a y Ciencias Sociales y Administrativas (UPIICSA-IPN) </h2>
+        <h2 align="center" class="Estilo2">Alumno(a): Garc&iacute;a Buend&iacute;a Karla Estrella</h2>
+        <h2 align="center" class="Estilo2">Carrera: Ciencias de la Inform&aacute;tica</h2>
+        <h2 align="center" class="Estilo2">5&deg;Semestre</h2>
+        <h2 align="center" class="Estilo2">Materia: Programaci&oacute;n Web</h2>
+        <h2 align="center" class="Estilo2">Profesor: Huerta Valdepe&ntilde;a Erick</h2>
+        <h2 align="center" class="Estilo2"><marquee>Tarea 1 (2&deg; Parcial - Serie 2-400)</marquee></h2>
+        <p align="center" class="Estilo2">&nbsp;</p>
+        <h3 align="center" class="Estilo2">Cálculos: </h3>
+        <p align="center" class="Estilo2">Promedio: <span id="promedio"><strong>Cargando...</strong></span></p>
+        <p align="center" class="Estilo2">Mediana: <span id="mediana"><strong>Cargando...</strong></span></p>
+        <p align="center" class="Estilo2">Moda: <span id="moda"><strong>Cargando...</strong></span></p>
+        <p align="center" class="Estilo2">&nbsp;</p>
+        <h3 align="center" class="Estilo2">Serie de números:</h3>
+        <div class="serie-container">
+            <p align="center" class="Estilo2" id="serie">Cargando...</p>
+        </div>
+</div>
+
+    <div align="center">
+          <script>
+		  document.addEventListener("DOMContentLoaded", function() {
+            function MiSerie() {
+                let serie = [];
+                for (let i = 2; i <= 400; i++) {
+                    serie.push(i);
+                }
+                return serie;
+            }
+
+            function ElPromedio(numeros) {
+                let suma = numeros.reduce((acc, num) => acc + num, 0);
+                return (suma / numeros.length).toFixed(2);
+            }
+
+            function LaMediana(numeros) {
+                let ordenados = [...numeros].sort((a, b) => a - b);
+                let mitad = Math.floor(ordenados.length / 2);
+                return numeros.length % 2 === 0 ? 
+                    ((ordenados[mitad - 1] + ordenados[mitad]) / 2).toFixed(2) : 
+                    ordenados[mitad];
+            }
+
+            function LaModa(numeros) {
+                let frecuencia = {};
+                numeros.forEach(num => frecuencia[num] = (frecuencia[num] || 0) + 1);
+                let maxFrecuencia = Math.max(...Object.values(frecuencia));
+                let modas = Object.keys(frecuencia).filter(num => frecuencia[num] === maxFrecuencia);
+                return modas.length === numeros.length ? "No hay moda" : modas.join(", ");
+            }
+
+            let numeros = MiSerie();
+            document.getElementById("promedio").innerText = ElPromedio(numeros);
+            document.getElementById("mediana").innerText = LaMediana(numeros);
+            document.getElementById("moda").innerText = LaModa(numeros);
+            document.getElementById("serie").innerText = numeros.join(", ");
+        });
+        </script>
+        </div>
+</body>
+</html>
