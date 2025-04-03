@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Arreglo Compuesto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #969393;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            width: 1000px;
+        }
+        .resultado {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .titulo {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 align="center" class="Estilo2">Unidad Profesional Interdisciplinaria de Ingenier&iacute;a y Ciencias Sociales y Administrativas (UPIICSA-IPN)</h2>
+        <h2 align="center" class="Estilo2">Alumno(a): Garc&iacute;a Buend&iacute;a Karla Estrella</h2>
+        <h2 align="center" class="Estilo2">Carrera: Ciencias de la Inform&aacute;tica</h2>
+        <h2 align="center" class="Estilo2">5&deg; Semestre</h2>
+        <h2 align="center" class="Estilo2">Materia: Programaci&oacute;n Web</h2>
+        <h2 align="center" class="Estilo2">Profesor: Huerta Valdepe&ntilde;a Erick</h2>
+        <h2 align="center" class="Estilo2"><marquee>Tarea 4 (2&deg; Parcial - Arreglo Compuesto)</marquee></h2>
+
+        <h3>Operaciones con un Arreglo Compuesto:</h3>
+        <p></p>
+        <p class="resultado"><span class="titulo">Suma de Números:</span> <span id="suma"></span></p>
+        <p class="resultado"><span class="titulo">Concatenación de Cadenas:</span> <span id="cadenas"></span></p>
+        <p class="resultado"><span class="titulo">Resultado AND de Booleanos:</span> <span id="booleanos"></span></p>
+    </div>
+
+    <script>
+        const arregloCompuesto = [28, "Karla Estrella", true, 29, "Jackson", false, 24, "Gahan", true];
+
+        let SNumeros = 0;
+        let concatenacionCadenas = "";
+        let resultadoBooleanos = true;
+        arregloCompuesto.forEach(elemento => {
+            if (typeof elemento === "number") {
+                SNumeros += elemento;
+            } else if (typeof elemento === "string") {
+                concatenacionCadenas += elemento + " ";
+            } else if (typeof elemento === "boolean") {
+                resultadoBooleanos = resultadoBooleanos && elemento;
+            }
+        });
+        document.getElementById("suma").textContent = SNumeros;
+        document.getElementById("cadenas").textContent = concatenacionCadenas.trim();
+        document.getElementById("booleanos").textContent = resultadoBooleanos;
+    </script>
+</body>
+</html>

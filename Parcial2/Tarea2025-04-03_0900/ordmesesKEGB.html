@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MesesOrdinalesNoKEGB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #969393;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            width: 1000px;
+        }
+        .meses {
+            list-style: none;
+            padding: 0;
+        }
+        .meses li {
+            font-size: 18px;
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .mes {
+            font-weight: bold;
+        }
+        .ordinal {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 align="center" class="Estilo2">Unidad Profesional Interdisciplinaria de Ingenier&iacute;a y Ciencias Sociales y Administrativas (UPIICSA-IPN)</h2>
+        <h2 align="center" class="Estilo2">Alumno(a): Garc&iacute;a Buend&iacute;a Karla Estrella</h2>
+        <h2 align="center" class="Estilo2">Carrera: Ciencias de la Inform&aacute;tica</h2>
+        <h2 align="center" class="Estilo2">5&deg; Semestre</h2>
+        <h2 align="center" class="Estilo2">Materia: Programaci&oacute;n Web</h2>
+        <h2 align="center" class="Estilo2">Profesor: Huerta Valdepe&ntilde;a Erick</h2>
+        <h2 align="center" class="Estilo2"><marquee>Tarea 3 (2&deg; Parcial - Meses del Año con su Ordinal)</marquee></h2>
+        <h3>Estos son los meses del año con su Ordinal</h3>
+        <ul class="meses" id="listaMeses"></ul>
+    </div>
+
+    <script>
+        const meses = [
+            "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        ];
+        const listaMeses = document.getElementById("listaMeses");
+        meses.forEach((mes, index) => {
+            let li = document.createElement("li");
+            li.innerHTML = `<span class='mes'>${mes}</span> <span class='ordinal'>${index + 1}º</span>`;
+            listaMeses.appendChild(li);
+        });
+    </script>
+</body>
+</html>
