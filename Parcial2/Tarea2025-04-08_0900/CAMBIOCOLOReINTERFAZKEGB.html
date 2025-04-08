@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CAMBIODECOLORKEGB</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #969393;
+      transition: background-color 0.3s;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      width: 1000px;
+      position: relative;
+    }
+    .cuadrados {
+      display: grid;
+      grid-template-columns: repeat(3, 50px);
+      grid-template-rows: repeat(2, 50px);
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .cuadrado {
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      border: 2px solid #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+    }
+    .w { grid-column: 2; grid-row: 1; }
+    .a { grid-column: 1; grid-row: 2; }
+    .s { grid-column: 2; grid-row: 2; }
+    .d { grid-column: 3; grid-row: 2; }
+
+    .movible {
+      width: 50px;
+      height: 50px;
+      background-color: #000;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all 0.2s;
+    }
+
+    #display {
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 18px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="Estilo2">Unidad Profesional Interdisciplinaria de Ingenier&iacute;a y Ciencias Sociales y Administrativas (UPIICSA-IPN)</h2>
+    <h2 class="Estilo2">Alumno(a): Garc&iacute;a Buend&iacute;a Karla Estrella</h2>
+    <h2 class="Estilo2">Carrera: Ciencias de la Inform&aacute;tica</h2>
+    <h2 class="Estilo2">5&deg; Semestre</h2>
+    <h2 class="Estilo2">Materia: Programaci&oacute;n Web</h2>
+    <h2 class="Estilo2">Profesor: Huerta Valdepe&ntilde;a Erick</h2>
+    <h2 class="Estilo2"><marquee>Tarea 4 (2&deg; Parcial - Cambiar color)</marquee></h2>
+
+    <h3>Cambio de Color de Fondo:</h3> 
+    <div id="movible" class="movible"></div>
+
+    <div class="cuadrados">
+      <div class="cuadrado w" onclick="btn_click('W')">W</div>
+      <div class="cuadrado a" onclick="btn_click('A')">A</div>
+      <div class="cuadrado s" onclick="btn_click('S')">S</div>
+      <div class="cuadrado d" onclick="btn_click('D')">D</div>
+    </div>
+  </div>
+
+  <script>
+    const movible = document.getElementById('movible');
+    let topPos = 0;
+    let leftPos = 0;
+
+    const colores = {
+      W: '#0000FF',   
+      A: '#FFFF00',   
+      S: '#FF6600',   
+      D: '#336600'    
+    };
+
+    function btn_click(val) {
+      var display = document.getElementById("display");
+      if (colores[val]) {
+        document.body.style.backgroundColor = colores[val];
+        display.value += val;
+      } else if (val === "=") {
+        try {
+          display.value = eval(display.value);
+        } catch {
+          display.value = "Error";
+        }
+      } else {
+        display.value += val;
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+  switch (e.key.toUpperCase()) {
+    case 'W':
+      topPos -= 10;
+      break;
+    case 'S':
+      topPos += 10;
+      break;
+    case 'A':
+      leftPos -= 10;
+      break;
+    case 'D':
+      leftPos += 10;
+      break;
+    case 'Z':
+      document.body.style.backgroundColor = '#FF0000';
+      break;
+    case 'X':
+      document.body.style.backgroundColor = '#00FF00';
+      break;
+  }
+  movible.style.top = topPos + 'px';
+  movible.style.left = leftPos + 'px';
+});
+
+  </script>
+</body>
+</html>
